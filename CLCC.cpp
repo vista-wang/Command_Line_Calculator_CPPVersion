@@ -124,7 +124,7 @@ namespace func{
 	}
 }
 
-int command_switch(const string& command,const string& a,const string& b)
+int command_switch(const string& command,string a,const string& b)
 {
 	if(command == "print"){
 		func::print(a);
@@ -133,8 +133,12 @@ int command_switch(const string& command,const string& a,const string& b)
 	float num = 0;
 	if (not func::isnumber(a,num))
 	{
-		cout << "error 04: use non-real numbers to assign values" << endl;
-		return 1;
+		if (vars::vars.find(a) == vars::vars.end())
+		{
+			cout << "error 04: use non-real numbers to assign values" << endl;
+			return 1;
+		}
+		a = to_string(vars::vars[a]);
 	}
 	if(a.empty()){
 		cout << "error 02: first input is empty " << endl;
@@ -147,26 +151,32 @@ int command_switch(const string& command,const string& a,const string& b)
 	if (command == "add")
 	{
 		func::add(num, b);
+		return 0;
 	}
 	if (command == "sub")
 	{
 		func::sub(num, b);
+		return 0;
 	}
 	if (command == "mul")
 	{
 		func::mul(num, b);
+		return 0;
 	}
 	if (command == "div")
 	{
 		func::div(num, b);
+		return 0;
 	}
 	if (command == "fang")
 	{
 		func::fang(num, b);
+		return 0;
 	}
 	if (command == "srt")
 	{
 		func::srt(num, b);
+		return 0;
 	}
 	cout << "error 01: incorrect command" <<endl;
 	return 1;
