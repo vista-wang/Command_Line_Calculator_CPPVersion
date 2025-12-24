@@ -95,7 +95,7 @@ namespace func {
     }
 
     // 幂运算：将变量的值提升到 num 次幂
-    int fang(const double& num, const std::string& name) {
+    int pow(const double& num, const std::string& name) {
         auto it = vars::vars.find(name);
         if (it == vars::vars.end()) {
             std::cout << "error 03: undefined variables" << std::endl;
@@ -118,7 +118,7 @@ namespace func {
     }
 
     // 开方：计算变量的 n 次方根（只接受正整数 n）
-    int srt(const double& num, const std::string& name) {
+    int rot(const double& num, const std::string& name) {
         auto it = vars::vars.find(name);
         if (it == vars::vars.end()) {
             std::cout << "error 03: undefined variables" << std::endl;
@@ -185,11 +185,11 @@ int command_switch(const std::string& command, const std::string& a, const std::
     if (command == "div") {
         return func::div(num, b);
     }
-    if (command == "fang") {
-        return func::fang(num, b);
+    if (command == "pow") {
+        return func::pow(num, b);
     }
-    if (command == "srt") {
-        return func::srt(num, b);
+    if (command == "rot") {
+        return func::rot(num, b);
     }
     std::cout << "error 01: incorrect command" << std::endl;
     return 1;
